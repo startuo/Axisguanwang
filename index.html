@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Lua - 顶级游戏辅助菜单</title>
+    <meta name="description" content="Axis Lua是一款综合性的GTA5 LUA辅助菜单，提供多种功能、趣味娱乐和恶搞">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo-container">
+                <div class="loader-logo-glow"></div>
+                <img src="images/logo.png" alt="Axis Lua Logo" class="loader-logo-img">
+                <div class="loader-particles">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="loader-text">
+                <span class="loader-brand">Axis Lua</span>
+                <span class="loader-status">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="images/logo.png" alt="Axis Lua Logo" class="logo-img">
+                <span class="logo-text">Axis Lua</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#features" class="nav-link">功能</a></li>
+                <li><a href="#pricing" class="nav-link">获取</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="https://qm.qq.com/q/Mv5QbAlBWE" target="_blank" class="btn btn-glow btn-sm">
+                    <i class="fab fa-qq"></i>
+                    加入QQ群聊
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero" id="home">
+        <div class="hero-particle-stage" aria-hidden="true">
+            <canvas class="hero-particle-canvas" data-antigravity-canvas></canvas>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down">
+                <i class="fas fa-crown"></i>
+                <span>丰富游戏脚本</span>
+            </div>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                <span class="gradient-text">Axis Lua</span>
+                <span class="title-sub">重新定义游戏体验</span>
+            </h1>
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+                支持Lexis，Cherax菜单<br>
+                多种功能 · 娱乐丰富 · 恶搞多样
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                <a href="#pricing" class="btn btn-glow btn-lg">
+                    <i class="fas fa-rocket"></i>
+                    立即获取
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <span>向下滚动</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特点 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Axis介绍</span>
+                <h2 class="section-title">为什么选择<span class="gradient-text">Axis Lua</span>？</h2>
+                <p class="section-subtitle">你需要的一切</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>精美UI</h3>
+                    <p>现代化的UI设计，流畅的动画效果，极致的视觉体验，还有涩涩主题</p>
+                    <div class="feature-hover"></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>多种恶搞功能</h3>
+                    <p>丰富的菜单脚本，恶搞绿玩的选择</p>
+                    <div class="feature-hover"></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>娱乐丰富</h3>
+                    <p>丰富的娱乐功能，超级英雄，载具天煞等丰富游玩体验</p>
+                    <div class="feature-hover"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价格方案 -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">目前免费获取</span>
+                <h2 class="section-title">Axis 目前<span class="gradient-text">免费使用</span></h2>
+                <p class="section-subtitle">立即获取，开启您的游戏新篇章</p>
+            </div>
+            <div class="pricing-single-card" data-aos="fade-up">
+                <div class="pricing-card-horizontal">
+                    <div class="pricing-card-left">
+                        <div class="pricing-icon-large">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="pricing-title-large">完全免费</h3>
+                        <p class="pricing-subtitle">无需支付任何费用</p>
+                    </div>
+                    <div class="pricing-card-right">
+                        <ul class="pricing-features-horizontal">
+                            <li><i class="fas fa-check"></i> 完整任务功能</li>
+                            <li><i class="fas fa-check"></i> 支持Lexis</li>
+                        </ul>
+                        <a href="https://qm.qq.com/q/Mv5QbAlBWE" target="_blank" class="btn btn-glow btn-lg">
+                            <i class="fas fa-users"></i>
+                            加入群聊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 区域 -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>准备好提升您的<span class="gradient-text">游戏体验</span>了吗？</h2>
+                <p>立即获取 Axis Lua，开启您的游戏新篇章</p>
+                <a href="https://qm.qq.com/q/Mv5QbAlBWE" target="_blank" class="btn btn-glow btn-lg">
+                    <i class="fas fa-users"></i>
+                    加入群聊
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-horizontal">
+                <div class="footer-brand-horizontal">
+                    <a href="#" class="footer-logo-horizontal">
+                        <img src="images/logo.png" alt="Axis Lua Logo" class="logo-img-horizontal">
+                        <span class="logo-text-horizontal">Axis Lua</span>
+                    </a>
+                    <p class="footer-description-horizontal">一款丰富功能的整合lua菜单，为玩家提供多种娱乐，恶搞的游戏体验。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Axis Lua. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/antigravity-hero.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
