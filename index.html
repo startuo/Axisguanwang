@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axis Lua - 顶级游戏辅助菜单</title>
     <meta name="description" content="Axis Lua是一款综合性的GTA5 LUA辅助菜单，提供多种功能、趣味娱乐和恶搞">
-    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 几何粒子背景 -->
+    <canvas id="particles-canvas" class="particles-bg"></canvas>
+
     <!-- 页面加载动画 -->
     <div class="page-loader">
         <div class="loader-content">
@@ -60,9 +62,6 @@
 
     <!-- Hero 区域 -->
     <section class="hero" id="home">
-        <div class="hero-particle-stage" aria-hidden="true">
-            <canvas class="hero-particle-canvas" data-antigravity-canvas></canvas>
-        </div>
         <div class="hero-content">
             <div class="hero-badge" data-aos="fade-down">
                 <i class="fas fa-crown"></i>
@@ -200,7 +199,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="js/antigravity-hero.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
