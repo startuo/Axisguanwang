@@ -44,6 +44,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">首页</a></li>
                 <li><a href="#features" class="nav-link">功能</a></li>
+                <li><a href="#menu" class="nav-link">菜单展示</a></li>
                 <li><a href="#pricing" class="nav-link">获取</a></li>
             </ul>
             <div class="nav-actions">
@@ -130,6 +131,89 @@
         </div>
     </section>
 
+    <!-- 菜单展示 -->
+    <section class="menu-showcase" id="menu">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">菜单展示</span>
+                <h2 class="section-title">直观感受<span class="gradient-text">精美界面</span></h2>
+                <p class="section-subtitle">每一处细节都经过精心打磨，呈现高品质视觉体验</p>
+            </div>
+            <div class="menu-gallery">
+                <div class="menu-card" data-aos="zoom-in" data-aos-delay="100" data-menu-index="01">
+                    <div class="menu-card-inner">
+                        <div class="menu-image-wrapper">
+                            <img src="images/menu-01.png" alt="Axis Lua 菜单截图 01" class="menu-image" loading="lazy">
+                            <div class="menu-image-overlay">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                        <div class="menu-card-info">
+                            <span class="menu-index">01</span>
+                            <h3 class="menu-title">主菜单界面</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-aos="zoom-in" data-aos-delay="200" data-menu-index="02">
+                    <div class="menu-card-inner">
+                        <div class="menu-image-wrapper">
+                            <img src="images/menu-02.png" alt="Axis Lua 菜单截图 02" class="menu-image" loading="lazy">
+                            <div class="menu-image-overlay">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                        <div class="menu-card-info">
+                            <span class="menu-index">02</span>
+                            <h3 class="menu-title">功能选项展示</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-aos="zoom-in" data-aos-delay="300" data-menu-index="03">
+                    <div class="menu-card-inner">
+                        <div class="menu-image-wrapper">
+                            <img src="images/menu-03.png" alt="Axis Lua 菜单截图 03" class="menu-image" loading="lazy">
+                            <div class="menu-image-overlay">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                        <div class="menu-card-info">
+                            <span class="menu-index">03</span>
+                            <h3 class="menu-title">娱乐特色面板</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-aos="zoom-in" data-aos-delay="400" data-menu-index="04">
+                    <div class="menu-card-inner">
+                        <div class="menu-image-wrapper">
+                            <img src="images/menu-04.png" alt="Axis Lua 菜单截图 04" class="menu-image" loading="lazy">
+                            <div class="menu-image-overlay">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                        <div class="menu-card-info">
+                            <span class="menu-index">04</span>
+                            <h3 class="menu-title">恶搞功能一览</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card menu-card-wide" data-aos="zoom-in" data-aos-delay="500" data-menu-index="05">
+                    <div class="menu-card-inner">
+                        <div class="menu-image-wrapper">
+                            <img src="images/menu-05.png" alt="Axis Lua 菜单截图 05" class="menu-image" loading="lazy">
+                            <div class="menu-image-overlay">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                        <div class="menu-card-info">
+                            <span class="menu-index">05</span>
+                            <h3 class="menu-title">完整界面总览</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 价格方案 -->
     <section class="pricing" id="pricing">
         <div class="container">
@@ -198,6 +282,27 @@
     <button class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- 菜单截图灯箱 -->
+    <div class="menu-lightbox" id="menuLightbox" aria-hidden="true">
+        <div class="menu-lightbox-overlay" data-close></div>
+        <button class="menu-lightbox-close" data-close aria-label="关闭预览">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="menu-lightbox-nav menu-lightbox-prev" id="menuLightboxPrev" aria-label="上一张">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="menu-lightbox-content">
+            <img src="" alt="菜单预览" class="menu-lightbox-image" id="menuLightboxImage">
+            <div class="menu-lightbox-caption">
+                <span class="menu-lightbox-index" id="menuLightboxIndex">01</span>
+                <span class="menu-lightbox-title" id="menuLightboxTitle">主菜单界面</span>
+            </div>
+        </div>
+        <button class="menu-lightbox-nav menu-lightbox-next" id="menuLightboxNext" aria-label="下一张">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

@@ -2082,18 +2082,458 @@ section {
         grid-template-columns: 1fr;
         padding: var(--space-xl);
     }
-    
+
     .pricing-features-horizontal {
         grid-template-columns: 1fr;
     }
-    
+
     .pricing-title-large {
         font-size: 2rem;
     }
-    
+
     .pricing-icon-large {
         width: 100px;
         height: 100px;
         font-size: 2.5rem;
+    }
+}
+
+/* ========================================
+   菜单展示 - 液态玻璃风格画廊
+   ======================================== */
+.menu-showcase {
+    background: rgba(10, 10, 15, 0.15);
+    backdrop-filter: blur(3px);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-showcase::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.menu-showcase .container {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(240px, auto);
+    gap: var(--space-lg);
+}
+
+.menu-card {
+    cursor: pointer;
+    min-height: 260px;
+}
+
+.menu-card-wide {
+    grid-column: span 2;
+}
+
+.menu-card-inner {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 var(--glass-border-highlight);
+}
+
+.menu-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-shine);
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 2;
+}
+
+.menu-card-inner::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-xl);
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.4), transparent 40%, transparent 60%, rgba(236, 72, 153, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.menu-card:hover .menu-card-inner {
+    transform: translateY(-8px);
+    background: rgba(22, 22, 32, 0.78);
+    border-color: var(--glass-border-highlight);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(147, 51, 234, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.menu-card:hover .menu-card-inner::after {
+    opacity: 1;
+}
+
+.menu-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    overflow: hidden;
+    background: #0a0a0f;
+}
+
+.menu-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.menu-card:hover .menu-image {
+    transform: scale(1.06);
+}
+
+.menu-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 15, 0) 40%,
+        rgba(10, 10, 15, 0.4) 70%,
+        rgba(10, 10, 15, 0.92) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: var(--space-md);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.menu-card:hover .menu-image-overlay {
+    opacity: 1;
+}
+
+.menu-image-overlay i {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(147, 51, 234, 0.4);
+    transform: scale(0.6);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-card:hover .menu-image-overlay i {
+    transform: scale(1);
+}
+
+.menu-card-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0) 100%);
+    pointer-events: none;
+}
+
+.menu-index {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.menu-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.menu-card-info::before {
+    content: '';
+    position: absolute;
+    left: var(--space-lg);
+    bottom: calc(100% - 1px);
+    width: 36px;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* ========================================
+   菜单截图灯箱
+   ======================================== */
+.menu-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.menu-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-lightbox-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 10, 0.85);
+    backdrop-filter: var(--glass-blur-heavy);
+    -webkit-backdrop-filter: var(--glass-blur-heavy);
+}
+
+.menu-lightbox-content {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 1100px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-lightbox.active .menu-lightbox-content {
+    transform: scale(1) translateY(0);
+}
+
+.menu-lightbox-image {
+    max-width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border-highlight);
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(147, 51, 234, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: #0a0a0f;
+}
+
+.menu-lightbox-caption {
+    margin-top: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 0.6rem 1.4rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.menu-lightbox-index {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.menu-lightbox-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.menu-lightbox-close,
+.menu-lightbox-nav {
+    position: absolute;
+    z-index: 2;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.menu-lightbox-close {
+    top: var(--space-lg);
+    right: var(--space-lg);
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+}
+
+.menu-lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    font-size: 1.25rem;
+}
+
+.menu-lightbox-prev {
+    left: var(--space-lg);
+}
+
+.menu-lightbox-next {
+    right: var(--space-lg);
+}
+
+.menu-lightbox-close:hover,
+.menu-lightbox-nav:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 8px 30px rgba(147, 51, 234, 0.5);
+}
+
+.menu-lightbox-close:hover {
+    transform: scale(1.08) rotate(90deg);
+}
+
+.menu-lightbox.active .menu-lightbox-image {
+    animation: lightboxImageIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes lightboxImageIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   菜单展示响应式
+   ======================================== */
+@media (max-width: 1024px) {
+    .menu-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu-card-wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-card,
+    .menu-card-wide {
+        grid-column: span 1;
+        min-height: 240px;
+    }
+
+    .menu-lightbox-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+
+    .menu-lightbox-prev {
+        left: var(--space-sm);
+    }
+
+    .menu-lightbox-next {
+        right: var(--space-sm);
+    }
+
+    .menu-lightbox-close {
+        top: var(--space-sm);
+        right: var(--space-sm);
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-lightbox-content {
+        width: 94%;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-image-wrapper {
+        min-height: 200px;
+    }
+
+    .menu-card {
+        min-height: 220px;
+    }
+
+    .menu-index {
+        font-size: 1.25rem;
+    }
+
+    .menu-title {
+        font-size: 0.9rem;
     }
 }

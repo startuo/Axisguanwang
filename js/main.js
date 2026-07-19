@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initTabs();
     initBackToTop();
+    initMenuLightbox();
 });
 
 /**
@@ -503,3 +504,148 @@ document.querySelectorAll('.feature-card, .pricing-card, .testimonial-card, .pri
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
     });
 });
+
+/**
+ * 菜单截图灯箱预览
+ */
+function initMenuLightbox() {
+    const lightbox = document.getElementById('menuLightbox');
+    if (!lightbox) return;
+
+    const lightboxImage = document.getElementById('menuLightboxImage');
+    const lightboxIndex = document.getElementById('menuLightboxIndex');
+    const lightboxTitle = document.getElementById('menuLightboxTitle');
+    const prevBtn = document.getElementById('menuLightboxPrev');
+    const nextBtn = document.getElementById('menuLightboxNext');
+    const closeElements = lightbox.querySelectorAll('[data-close]');
+    const menuCards = document.querySelectorAll('.menu-card');
+
+    if (!menuCards.length || !lightboxImage) return;
+
+    // 收集菜单项数据
+    const menuItems = Array.from(menuCards).map(card => {
+        const img = card.querySelector('.menu-image');
+        const titleEl = card.querySelector('.menu-title');
+        const indexEl = card.querySelector('.menu-index');
+        return {
+            src: img ? img.getAttribute('src') : '',
+            alt: img ? img.getAttribute('alt') : '',
+            title: titleEl ? titleEl.textContent : '',
+            index: indexEl ? indexEl.textContent : '',
+        };
+    });
+
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    function render(index) {
+        const item = menuItems[index];
+        if (!item) return;
+        currentIndex = index;
+        lightboxImage.src = item.src;
+        lightboxImage.alt = item.alt;
+        lightboxIndex.textContent = item.index;
+        lightboxTitle.textContent = item.title;
+
+        // 重新触发图片入场动画
+        lightboxImage.style.animation = 'none';
+        // 强制回流以重启动画
+        void lightboxImage.offsetWidth;
+        lightboxImage.style.animation = '';
+    }
+
+    function open(index) {
+        currentIndex = index;
+        render(index);
+        lastFocusedElement = document.activeElement;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // 聚焦关闭按钮以便键盘可操作
+        const closeBtn = lightbox.querySelector('.menu-lightbox-close');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function close() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+    }
+
+    function next() {
+        render((currentIndex + 1) % menuItems.length);
+    }
+
+    function prev() {
+        render((currentIndex - 1 + menuItems.length) % menuItems.length);
+    }
+
+    // 点击卡片打开灯箱
+    menuCards.forEach((card, idx) => {
+        card.addEventListener('click', () => open(idx));
+        // 键盘可访问性
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open(idx);
+            }
+        });
+    });
+
+    // 关闭按钮 / 遮罩
+    closeElements.forEach(el => {
+        el.addEventListener('click', close);
+    });
+
+    // 切换按钮
+    if (prevBtn) prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prev();
+    });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        next();
+    });
+
+    // 键盘交互
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        switch (e.key) {
+            case 'Escape':
+                close();
+                break;
+            case 'ArrowLeft':
+                prev();
+                break;
+            case 'ArrowRight':
+                next();
+                break;
+        }
+    });
+
+    // 触摸滑动支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        // 仅在滑动距离足够时切换，避免误触
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                next();
+            } else {
+                prev();
+            }
+        }
+    }, { passive: true });
+}

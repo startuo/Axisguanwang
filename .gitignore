@@ -1,0 +1,19 @@
+# IDE / Editor
+.trae/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志与缓存
+*.log
+.cache/
+*.tmp
+
+# 依赖（如未来引入构建工具）
+node_modules/
