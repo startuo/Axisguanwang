@@ -2,7 +2,7 @@
 
 > 一款面向 GTA5 玩家的综合性 Lua 菜单官方网站，采用暗紫粉色液态玻璃风格，提供菜单展示、功能介绍与免费获取入口。
 
-官网在线访问：[https://github.com/startuo/Axisguanwang]([https://github.com/startuo/Axisguanwang](https://cym5xh3e8-axisguanwang-gjs9q0158.maozi.io/))
+官网在线访问：【https://cym5xh3e8-axisguanwang-gjs9q0158.maozi.io/】
 
 ---
 
